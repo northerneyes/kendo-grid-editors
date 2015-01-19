@@ -204,4 +204,4 @@ columns:[{
 ```
 
 ## License
-This code is provided under the Apache 2.0 license.
+This code is provided under the MIT license.

@@ -1,0 +1,29 @@
+{
+  "name": "kendo-grid-editors",
+  "version": "1.0.0",
+  "description": "Additional grid editors for kendo-ui library.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/northerneyes/kendo-grid-editors"
+  },
+  "keywords": [
+    "editors",
+    "kendo",
+    "kendo-ui",
+    "grid",
+    "kendoGrid"
+  ],
+  "author": "George Bukhanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/northerneyes/kendo-grid-editors/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
