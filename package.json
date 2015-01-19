@@ -2,7 +2,7 @@
   "name": "kendo-grid-editors",
   "version": "1.0.0",
   "description": "Additional grid editors for kendo-ui library.",
-  "main": "index.js",
+  "main": "KendoGridEditors.js",
   "scripts": {
     "test": ""
   },
