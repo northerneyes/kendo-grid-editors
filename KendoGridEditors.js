@@ -1,4 +1,4 @@
-//	KendoGridEditors.js 1.1.0
+//	KendoGridEditors.js 1.1.1
 
 //	(c) 2014 George Bukhanov
 //	Kendo grid editors may be freely distributed under the MIT license. 
@@ -15,7 +15,7 @@
 
 		// Next for Node.js or CommonJS. 
 	} else if (typeof exports !== 'undefined') {
-		var keondo = require('kendo');
+		var kendo = require('kendo');
 		var $ = require('jquery');
 		factory(root, exports, kendo, $);
 
