@@ -1,4 +1,4 @@
-//	KendoGridEditors.js 1.0.0
+//	KendoGridEditors.js 1.1.0
 
 //	(c) 2014 George Bukhanov
 //	Kendo grid editors may be freely distributed under the MIT license. 
@@ -55,7 +55,7 @@
 	};
 
 	KendoGridEditors.dropDownImageEditor = function(container, options, dataSource) {
-		var imageTemplate = KendoGridEditors.dropdownImageTemplate({
+		var imageTemplate = dropdownImageTemplate({
 			field: 'data',
 			image: options.image,
 			text: options.text,
@@ -127,6 +127,14 @@
 	};
 
 	//templates
+	function dropdownImageTemplate (options) {
+		var textTemplate = options.text ? kendo.format("#= {0}.{1}#", options.field, options.text) : "";
+		options.width = options.width || 16;
+		options.height = options.height || 16;
+		return  kendo.format("<img src='#= {0}.{2}#' style='vertical-align: middle; width: {3}px; height: {4}px' /> {1}",
+			options.field, textTemplate, options.image, options.width, options.height);
+	}
+
 	KendoGridEditors.dateTemplate = function(dataItem, options) {
 		options.format = options.format || "dd.MM.yyyy";
 		var template = kendo.format('#= kendo.toString({0}, "{1}") #', options.field, options.format);
@@ -150,12 +158,7 @@
 	};
 
 	KendoGridEditors.dropdownImageTemplate = function(dataItem, options) {
-		var textTemplate = options.text ? kendo.format("#= {0}.{1}#", options.field, options.text) : "";
-		options.width = options.width || 16;
-		options.height = options.height || 16;
-		var template = kendo.format("<img src='#= {0}.{2}#' style='vertical-align: middle; width: {3}px; height: {4}px' /> {1}",
-			options.field, textTemplate, options.image, options.width, options.height);
-		return kendo.template(template)(dataItem);
+		return kendo.template(dropdownImageTemplate(options))(dataItem);
 	};
 
 
