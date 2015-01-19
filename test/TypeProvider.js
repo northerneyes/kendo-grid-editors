@@ -8,6 +8,7 @@ var TypesProvider = (function(gridEditors) {
         Color: 6,
         Bool: 7,
         List: 8,
+        ImageList: 9,
         None: -1
     };
 
@@ -98,7 +99,9 @@ var TypesProvider = (function(gridEditors) {
                 return '#FF0000';
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template(gridEditors.colorTemplate('data'))(dataItem[field]);
+                return kendo.template(gridEditors.colorTemplate({
+                    field: field
+                }))(dataItem);
             },
             editor: function(container, options) {
                 gridEditors.colorEditor(container, options, 'basic', 7);
@@ -107,13 +110,67 @@ var TypesProvider = (function(gridEditors) {
             value: ValueType.List,
             text: 'list',
             default: function() {
-                return '#FF0000';
+                return {
+                    value: 0,
+                    text: "Jarry"
+                };
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template(gridEditors.colorTemplate('data'))(dataItem[field]);
+                return kendo.template(gridEditors.dropdownTemplate({
+                    field: field
+                }))(dataItem);
             },
             editor: function(container, options) {
-                gridEditors.colorEditor(container, options, 'basic', 7);
+                options.text = 'text';
+                options.value = 'value';
+                var list = [{
+                    value: 0,
+                    text: "Jarry"
+                }, {
+                    value: 1,
+                    text: "Mike"
+                }, {
+                    value: 2,
+                    text: "Jane"
+                }];
+                gridEditors.dropDownEditor(container, options, list);
+            }
+        }, {
+            value: ValueType.ImageList,
+            text: 'imagelist',
+            default: function() {
+                return {
+                    value: 0,
+                    text: "Signal",
+                    image: "https://cdn2.iconfinder.com/data/icons/woothemes/PNG/signal.png"
+                };
+            },
+            valueTemplate: function(dataItem, field) {
+                var options = {};
+                options.field = field;
+                options.value = 'value';
+                options.image = 'image';
+                options.text = 'text';
+                return kendo.template(gridEditors.dropdownImageTemplate(options))(dataItem);
+            },
+            editor: function(container, options) {
+                options.text = 'text';
+                options.value = 'value';
+                options.image = 'image';
+                var list = [{
+                    value: 0,
+                    text: "Signal",
+                    image: "https://cdn2.iconfinder.com/data/icons/woothemes/PNG/signal.png"
+                }, {
+                    value: 1,
+                    text: "Charts",
+                    image: "https://cdn2.iconfinder.com/data/icons/woothemes/PNG/document_graph.png"
+                }, {
+                    value: 2,
+                    text: "Pdf",
+                    image: "https://cdn2.iconfinder.com/data/icons/woothemes/PNG/document_pdf.png"
+                }];
+                gridEditors.dropDownImageEditor(container, options, list);
             }
         }];
     }
