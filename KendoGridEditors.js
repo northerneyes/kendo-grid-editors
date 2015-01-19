@@ -1,9 +1,10 @@
-//		KendoGridEditors.js 1.0.0
+//	KendoGridEditors.js 1.0.0
 
-//		(c) 2014 George Bukhanov
-//		Kendo grid editors may be freely distributed under the MIT license. 
-//		For all details and documentation:
-//		http://github
+//	(c) 2014 George Bukhanov
+//	Kendo grid editors may be freely distributed under the MIT license. 
+//	For all details and documentation:
+//	https://github.com/northerneyes/kendo-grid-editors
+
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['kendo', 'jquery', 'exports'], function(kendo, $, exports) {
