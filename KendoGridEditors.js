@@ -53,34 +53,6 @@
 			});
 	};
 
-	KendoGridEditors.dropDownTreeViewEditor = function(container, options, dataSource, template, change) {
-		var $dropDownTreeView = $('<div ></div>')
-			.appendTo(container)
-			.kendoExtDropDownTreeView({
-				// dropDownWidth: 160,
-				valueTemplate: kendo.template($('#dropdown-image-selector').html()),
-				treeview: {
-					dataSource: dataSource,
-					select: function(e) {
-						options.model.dirty = true;
-						options.model.gfNode = this.dataItem(e.node);
-					}
-				}
-			});
-		$dropDownTreeView.find('.k-image').height(16).width(16); //set width and height of images
-		if (options.model.gfNode.id)
-			$dropDownTreeView.data("kendoExtDropDownTreeView").select(options.model.gfNode.id);
-
-	};
-
-	// function dropdownImageTemplate(options) {
-	// 	var textTemplate = options.text ? kendo.format("#= {0}.{1}#", options.field, options.text) : "";
-	// 	options.width = options.width || 16;
-	// 	options.height = options.height || 16;
-	// 	return kendo.format("<img src='#= {0}.{2}#' style='vertical-align: middle; width: {3}px; height: {4}px' /> {1}",
-	// 		options.field, textTemplate, options.image, options.width, options.height);
-	// }
-
 	KendoGridEditors.dropDownImageEditor = function(container, options, dataSource) {
 		var imageTemplate = KendoGridEditors.dropdownImageTemplate({
 			field: 'data',
