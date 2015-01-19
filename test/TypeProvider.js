@@ -9,6 +9,7 @@ var TypesProvider = (function(gridEditors) {
         Bool: 7,
         List: 8,
         ImageList: 9,
+        MultiSelect: 10,
         None: -1
     };
 
@@ -49,7 +50,10 @@ var TypesProvider = (function(gridEditors) {
                 return new Date();
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template('#= kendo.toString(data, "dd.MM.yyyy")# ')(dataItem[field]);
+                options = {};
+                options.field = field;
+                options.format = "dd.MM.yyyy";
+                return gridEditors.dateTemplate(dataItem, options);
             },
 
             editor: function(container, options) {
@@ -63,7 +67,10 @@ var TypesProvider = (function(gridEditors) {
                 return new Date();
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template('#= kendo.toString(data, "HH:mm")# ')(dataItem[field]);
+                options = {};
+                options.field = field;
+                options.format = "HH:mm";
+                return gridEditors.timeTemplate(dataItem, options);
             },
             editor: function(container, options) {
                 options.format = "{0:HH:mm}";
@@ -85,9 +92,9 @@ var TypesProvider = (function(gridEditors) {
                 return false;
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template(gridEditors.boolTemplate({
-                    field: field
-                }))(dataItem);
+                options = {};
+                options.field = field;
+                return gridEditors.boolTemplate(dataItem, options);
             },
             editor: function(container, options) {
                 gridEditors.boolEditor(container, options);
@@ -99,9 +106,9 @@ var TypesProvider = (function(gridEditors) {
                 return '#FF0000';
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template(gridEditors.colorTemplate({
-                    field: field
-                }))(dataItem);
+                options = {};
+                options.field = field;
+                return gridEditors.colorTemplate(dataItem, options);
             },
             editor: function(container, options) {
                 gridEditors.colorEditor(container, options, 'basic', 7);
@@ -116,9 +123,9 @@ var TypesProvider = (function(gridEditors) {
                 };
             },
             valueTemplate: function(dataItem, field) {
-                return kendo.template(gridEditors.dropdownTemplate({
-                    field: field
-                }))(dataItem);
+                options = {};
+                options.field = field;
+                return gridEditors.dropdownTemplate(dataItem, options);
             },
             editor: function(container, options) {
                 options.text = 'text';
@@ -151,7 +158,7 @@ var TypesProvider = (function(gridEditors) {
                 options.value = 'value';
                 options.image = 'image';
                 options.text = 'text';
-                return kendo.template(gridEditors.dropdownImageTemplate(options))(dataItem);
+                return gridEditors.dropdownImageTemplate(dataItem, options);
             },
             editor: function(container, options) {
                 options.text = 'text';
@@ -171,6 +178,37 @@ var TypesProvider = (function(gridEditors) {
                     image: "https://cdn2.iconfinder.com/data/icons/woothemes/PNG/document_pdf.png"
                 }];
                 gridEditors.dropDownImageEditor(container, options, list);
+            }
+        }, {
+            value: ValueType.MultiSelect,
+            text: 'multiSelect',
+            default: function() {
+                return {
+                    value: 0,
+                    text: "Jarry"
+                };
+            },
+            valueTemplate: function(dataItem, field) {
+                options = {};
+                options.field = field;
+                options.text = 'text';
+                return gridEditors.multiSelectTemplate(dataItem, options);
+            },
+            editor: function(container, options) {
+                options.text = 'text';
+                options.value = 'value';
+                var list = [{
+                    value: 0,
+                    text: "Jarry"
+                }, {
+                    value: 1,
+                    text: "Mike"
+                }, {
+                    value: 2,
+                    text: "Jane"
+                }];
+                gridEditors.multiSelectEditor(container, options, list);
+
             }
         }];
     }

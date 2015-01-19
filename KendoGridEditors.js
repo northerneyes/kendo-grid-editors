@@ -111,22 +111,6 @@
 	};
 
 
-	//templates
-	KendoGridEditors.dropdownTemplate = function(options) {
-		return kendo.format("#= {0}.text#", options.field);
-	};
-
-	KendoGridEditors.dropdownImageTemplate = function(options) {
-		var textTemplate = options.text ? kendo.format("#= {0}.{1}#", options.field, options.text) : "";
-		options.width = options.width || 16;
-		options.height = options.height || 16;
-		return kendo.format("<img src='#= {0}.{2}#' style='vertical-align: middle; width: {3}px; height: {4}px' /> {1}",
-			options.field, textTemplate, options.image, options.width, options.height);
-	};
-
-	KendoGridEditors.boolTemplate = function(options) {
-		return kendo.format('<input type="checkbox" name="{0}"  #={0} ?  "checked" : ""# onclick="return false">', options.field);
-	};
 
 	KendoGridEditors.multiSelectEditor = function(container, options, dataSource, template, placeholder, change) {
 		$('<select data-text-field="' + options.text + '" data-value-field="' + options.value + '" data-bind="value:' + options.field + '"/>')
@@ -141,12 +125,47 @@
 			});
 	};
 
-	KendoGridEditors.multiSelectTemplate = function(options) {
-		return kendo.format('<div>#= {0}.length > 0 ? _.reduce({0}, function(memo, item){ return memo + (memo ? "," : "") + item.Name; }, "") : "{1}"#<div>', options.field, options.placeholder);
+	//templates
+	KendoGridEditors.dateTemplate = function(dataItem, options) {
+		options.format = options.format || "dd.MM.yyyy";
+		var template = kendo.format('#= kendo.toString({0}, "{1}") #', options.field, options.format);
+		return kendo.template(template)(dataItem);
 	};
 
-	KendoGridEditors.colorTemplate = function(options) {
-		return kendo.format("<div style='background-color:#= {0} #; height: 20px;width: 20px;border: 1px solid; float: left'></div><div style='float: right; margin-top: 3px;'>#= {0} #</div>", options.field);
+	KendoGridEditors.timeTemplate = function(dataItem, options) {
+		options.format = options.format || "HH:mm";
+		var template = kendo.format('#= kendo.toString({0}, "{1}") #', options.field, options.format);
+		return kendo.template(template)(dataItem);
+	};
+
+	KendoGridEditors.boolTemplate = function(dataItem, options) {
+		var template = kendo.format('<input type="checkbox" name="{0}"  #={0} ?  "checked" : ""# onclick="return false">', options.field);
+		return kendo.template(template)(dataItem);
+	};
+
+	KendoGridEditors.dropdownTemplate = function(dataItem, options) {
+		var template = kendo.format("#= {0}.text#", options.field);
+		return kendo.template(template)(dataItem);
+	};
+
+	KendoGridEditors.dropdownImageTemplate = function(dataItem, options) {
+		var textTemplate = options.text ? kendo.format("#= {0}.{1}#", options.field, options.text) : "";
+		options.width = options.width || 16;
+		options.height = options.height || 16;
+		var template = kendo.format("<img src='#= {0}.{2}#' style='vertical-align: middle; width: {3}px; height: {4}px' /> {1}",
+			options.field, textTemplate, options.image, options.width, options.height);
+		return kendo.template(template)(dataItem);
+	};
+
+
+	KendoGridEditors.multiSelectTemplate = function(dataItem, options) {
+		var template = kendo.format('<div>#= {0}.length > 0 ? _.reduce({0}, function(memo, item){ return memo + (memo ? "," : "") + item.{2}; }, "") : "{1}"#<div>', options.field, options.placeholder, options.text);
+		return kendo.template(template)(dataItem);
+	};
+
+	KendoGridEditors.colorTemplate = function(dataItem, options) {
+		var template = kendo.format("<div style='background-color:#= {0} #; height: 20px;width: 20px;border: 1px solid; float: left'></div><div style='float: right; margin-top: 3px;'>#= {0} #</div>", options.field);
+		return kendo.template(template)(dataItem);
 	};
 
 	return KendoGridEditors;
