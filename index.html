@@ -4,20 +4,50 @@
     <style>html { font-size: 12px; font-family: Arial, Helvetica, sans-serif; }</style>
     <title></title>
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.default.min.css" />
+    <link href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.common-material.min.css" rel="stylesheet">
+    <link href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.material.min.css" rel="stylesheet">
+   <!--  <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.default.min.css" />
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.dataviz.default.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.3.1316/styles/kendo.dataviz.default.min.css" /> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
     <script src="http://cdn.kendostatic.com/2014.3.1316/js/jquery.min.js"></script>
     <script src="http://cdn.kendostatic.com/2014.3.1316/js/kendo.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <script src="../KendoGridEditors.js"></script>
-    <script src="./TypeProvider.js"></script>
-    <script src="./index.js"></script>
+    <script src="./KendoGridEditors.js"></script>
+    <script src="./test/TypeProvider.js"></script>
+    <script src="./test/index.js"></script>
 </head>
 <body>
 <div id="example">
-    <div style="width: 700px; height: 700px" id="grid"></div>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">KendoGridEditors</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="https://github.com/northerneyes/kendo-grid-editors">Github project</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" style="padding-top: 50px">
+        <section>
+            <h1>Additional grid editors for kendo-ui library.</h1>
+            <div style="height: 850px" id="grid"></div>
+        </section>  
+        
+    </div>
 </div>
 </body>
 </html>

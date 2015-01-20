@@ -222,7 +222,8 @@ var TypesProvider = (function(gridEditors) {
         },
         default: function() {
             return this.types()[0];
-        }
+        },
+        ValueType:ValueType
 
     };
 }(KendoGridEditors));

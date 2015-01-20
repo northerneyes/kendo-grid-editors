@@ -27,7 +27,7 @@ var grid = $grid.kendoGrid({
                     }];
                     KendoGridEditors.dropDownEditor(container, options, list);   // use specific editor
                 },
-                template: function(dataItem) {    // how to dispay in grid cell
+                template: function(dataItem) {    // how to display in grid cell
                   options = {};
                   options.field = field;
                   return KendoGridEditors.dropdownTemplate(dataItem, options); // use specific value template
