@@ -3,6 +3,9 @@ kendo-grid-editors
 Additional grid editors for kendo-ui library.
 ## Basic Usage
 
+## [Demo](http://northerneyes.github.io/kendo-grid-editors/)
+A demo is available on the Github Pages webpage for kendo-grid-editors [here](http://northerneyes.github.io/kendo-grid-editors/).
+
 ```javascript
 // create grid
 var grid = $grid.kendoGrid({
